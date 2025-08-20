@@ -1,0 +1,200 @@
+{
+  "name": "StudyMate - Ultimate Study Companion",
+  "short_name": "StudyMate",
+  "description": "Professional study platform for students and book lovers with AI-powered tools, OCR, translation, and productivity features",
+  "version": "2.0.0",
+  "manifest_version": 3,
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#2563eb",
+  "background_color": "#ffffff",
+  "lang": "en-US",
+  "dir": "ltr",
+  
+  "categories": [
+    "education",
+    "productivity", 
+    "books",
+    "study",
+    "learning",
+    "ai"
+  ],
+  
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 72 72'><defs><linearGradient id='grad1' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' style='stop-color:%232563eb;stop-opacity:1'/><stop offset='100%' style='stop-color:%233b82f6;stop-opacity:1'/></linearGradient></defs><rect width='72' height='72' rx='16' fill='url(%23grad1)'/><path d='M18 20h36c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H18c-1.1 0-2-.9-2-2V22c0-1.1.9-2 2-2z' fill='white' opacity='0.9'/><path d='M22 26h28v2H22zm0 6h28v2H22zm0 6h20v2H22z' fill='%232563eb'/><circle cx='48' cy='42' r='8' fill='%23fbbf24'/><path d='M44 42l3 3 6-6' stroke='white' stroke-width='2' fill='none'/></svg>",
+      "sizes": "72x72",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'><defs><linearGradient id='grad1' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' style='stop-color:%232563eb;stop-opacity:1'/><stop offset='100%' style='stop-color:%233b82f6;stop-opacity:1'/></linearGradient></defs><rect width='96' height='96' rx='20' fill='url(%23grad1)'/><path d='M24 26h48c1.1 0 2 .9 2 2v40c0 1.1-.9 2-2 2H24c-1.1 0-2-.9-2-2V28c0-1.1.9-2 2-2z' fill='white' opacity='0.9'/><path d='M30 36h36v3H30zm0 8h36v3H30zm0 8h28v3H30z' fill='%232563eb'/><circle cx='64' cy='56' r='12' fill='%23fbbf24'/><path d='M58 56l4 4 8-8' stroke='white' stroke-width='3' fill='none'/></svg>",
+      "sizes": "96x96", 
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'><defs><linearGradient id='grad1' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' style='stop-color:%232563eb;stop-opacity:1'/><stop offset='100%' style='stop-color:%233b82f6;stop-opacity:1'/></linearGradient></defs><rect width='128' height='128' rx='28' fill='url(%23grad1)'/><path d='M32 34h64c1.5 0 2.5 1 2.5 2.5v55c0 1.5-1 2.5-2.5 2.5H32c-1.5 0-2.5-1-2.5-2.5v-55c0-1.5 1-2.5 2.5-2.5z' fill='white' opacity='0.9'/><path d='M40 46h48v4H40zm0 12h48v4H40zm0 12h36v4H40z' fill='%232563eb'/><circle cx='84' cy='74' r='16' fill='%23fbbf24'/><path d='M76 74l6 6 12-12' stroke='white' stroke-width='4' fill='none'/></svg>",
+      "sizes": "128x128",
+      "type": "image/svg+xml", 
+      "purpose": "any"
+    },
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><defs><linearGradient id='grad1' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' style='stop-color:%232563eb;stop-opacity:1'/><stop offset='100%' style='stop-color:%233b82f6;stop-opacity:1'/></linearGradient></defs><rect width='192' height='192' rx='42' fill='url(%23grad1)'/><path d='M48 52h96c2.2 0 4 1.8 4 4v80c0 2.2-1.8 4-4 4H48c-2.2 0-4-1.8-4-4V56c0-2.2 1.8-4 4-4z' fill='white' opacity='0.9'/><path d='M60 72h72v6H60zm0 18h72v6H60zm0 18h54v6H60z' fill='%232563eb'/><circle cx='126' cy='112' r='24' fill='%23fbbf24'/><path d='M114 112l9 9 18-18' stroke='white' stroke-width='6' fill='none'/></svg>",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><defs><linearGradient id='grad1' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' style='stop-color:%232563eb;stop-opacity:1'/><stop offset='100%' style='stop-color:%233b82f6;stop-opacity:1'/></linearGradient></defs><rect width='512' height='512' rx='110' fill='url(%23grad1)'/><path d='M128 140h256c6 0 10 4 10 10v212c0 6-4 10-10 10H128c-6 0-10-4-10-10V150c0-6 4-10 10-10z' fill='white' opacity='0.9'/><path d='M160 190h192v16H160zm0 48h192v16H160zm0 48h144v16H160z' fill='%232563eb'/><circle cx='336' cy='300' r='64' fill='%23fbbf24'/><path d='M304 300l24 24 48-48' stroke='white' stroke-width='16' fill='none'/></svg>",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  
+  "shortcuts": [
+    {
+      "name": "Start Focus Timer",
+      "short_name": "Timer",
+      "description": "Begin a focused study session",
+      "url": "./index.html#pomodoro",
+      "icons": [
+        {
+          "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'><circle cx='48' cy='48' r='48' fill='%23ef4444'/><circle cx='48' cy='48' r='32' fill='white'/><path d='M48 24v24l16 16' stroke='%23ef4444' stroke-width='4' fill='none'/></svg>",
+          "sizes": "96x96",
+          "type": "image/svg+xml"
+        }
+      ]
+    },
+    {
+      "name": "OCR Scanner",
+      "short_name": "Scan", 
+      "description": "Extract text from images",
+      "url": "./index.html#ocr",
+      "icons": [
+        {
+          "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'><circle cx='48' cy='48' r='48' fill='%2310b981'/><path d='M32 32h32v32H32z' fill='none' stroke='white' stroke-width='4'/><circle cx='48' cy='48' r='8' fill='white'/></svg>",
+          "sizes": "96x96", 
+          "type": "image/svg+xml"
+        }
+      ]
+    },
+    {
+      "name": "AI Tools",
+      "short_name": "AI",
+      "description": "Access AI-powered study tools",
+      "url": "./index.html#question-generator", 
+      "icons": [
+        {
+          "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'><circle cx='48' cy='48' r='48' fill='%238b5cf6'/><circle cx='36' cy='36' r='4' fill='white'/><circle cx='60' cy='36' r='4' fill='white'/><path d='M36 60c0-6.6 5.4-12 12-12s12 5.4 12 12' fill='none' stroke='white' stroke-width='4'/></svg>",
+          "sizes": "96x96",
+          "type": "image/svg+xml"
+        }
+      ]
+    },
+    {
+      "name": "Library",
+      "short_name": "Books",
+      "description": "Access your book library", 
+      "url": "./index.html#library",
+      "icons": [
+        {
+          "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'><circle cx='48' cy='48' r='48' fill='%23f59e0b'/><path d='M28 32h40v32H28z' fill='white'/><path d='M32 40h32v2H32zm0 6h32v2H32zm0 6h24v2H32z' fill='%23f59e0b'/></svg>",
+          "sizes": "96x96",
+          "type": "image/svg+xml"
+        }
+      ]
+    }
+  ],
+  
+  "screenshots": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1280 800'><rect width='1280' height='800' fill='%23f8fafc'/><rect x='60' y='60' width='1160' height='680' rx='20' fill='white' stroke='%23e2e8f0' stroke-width='2'/><rect x='80' y='80' width='256' height='640' fill='%232563eb'/><rect x='356' y='80' width='864' height='80' fill='white' stroke='%23e2e8f0'/><text x='640' y='130' font-family='Arial' font-size='24' fill='%232563eb' text-anchor='middle'>StudyMate Dashboard</text><rect x='380' y='200' width='200' height='120' rx='12' fill='white' stroke='%23e2e8f0'/><rect x='600' y='200' width='200' height='120' rx='12' fill='white' stroke='%23e2e8f0'/><rect x='820' y='200' width='200' height='120' rx='12' fill='white' stroke='%23e2e8f0'/><rect x='1040' y='200' width='160' height='120' rx='12' fill='white' stroke='%23e2e8f0'/></svg>",
+      "sizes": "1280x800",
+      "type": "image/svg+xml",
+      "form_factor": "wide",
+      "label": "StudyMate Dashboard - Desktop View"
+    },
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 390 844'><rect width='390' height='844' fill='%23f8fafc'/><rect x='20' y='20' width='350' height='804' rx='24' fill='white' stroke='%23e2e8f0' stroke-width='2'/><rect x='40' y='40' width='310' height='64' fill='%232563eb' rx='12'/><text x='195' y='80' font-family='Arial' font-size='18' fill='white' text-anchor='middle'>StudyMate</text><rect x='40' y='124' width='310' height='100' rx='12' fill='white' stroke='%23e2e8f0'/><rect x='40' y='244' width='310' height='100' rx='12' fill='white' stroke='%23e2e8f0'/><rect x='40' y='364' width='310' height='100' rx='12' fill='white' stroke='%23e2e8f0'/></svg>",
+      "sizes": "390x844", 
+      "type": "image/svg+xml",
+      "form_factor": "narrow",
+      "label": "StudyMate Dashboard - Mobile View"
+    }
+  ],
+  
+  "related_applications": [],
+  "prefer_related_applications": false,
+  
+  "display_override": [
+    "window-controls-overlay",
+    "standalone", 
+    "minimal-ui",
+    "browser"
+  ],
+  
+  "file_handlers": [
+    {
+      "action": "./index.html",
+      "accept": {
+        "application/pdf": [".pdf"],
+        "application/epub+zip": [".epub"],
+        "text/plain": [".txt"],
+        "application/msword": [".doc"],
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document": [".docx"],
+        "image/*": [".jpg", ".jpeg", ".png", ".gif", ".webp", ".bmp"]
+      }
+    }
+  ],
+  
+  "share_target": {
+    "action": "./index.html",
+    "method": "POST", 
+    "enctype": "multipart/form-data",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url",
+      "files": [
+        {
+          "name": "documents",
+          "accept": [
+            "application/pdf",
+            "application/epub+zip", 
+            "text/plain",
+            "application/msword",
+            "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+          ]
+        },
+        {
+          "name": "images",
+          "accept": [
+            "image/jpeg",
+            "image/png", 
+            "image/gif",
+            "image/webp"
+          ]
+        }
+      ]
+    }
+  },
+  
+  "protocol_handlers": [
+    {
+      "protocol": "web+studymate",
+      "url": "./index.html?action=%s"
+    }
+  ],
+  
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  
+  "launch_handler": {
+    "client_mode": ["navigate-existing", "auto"]
+  }
+}
