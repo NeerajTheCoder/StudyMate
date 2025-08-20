@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyMate - Ultimate Study Companion</title>
+    <meta name="description" content="Professional study platform for students and book lovers with AI-powered tools, OCR, translation, and productivity features">
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#2563eb">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="StudyMate">
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%232563eb'/><text x='50' y='65' font-family='Arial' font-size='50' fill='white' text-anchor='middle'>📚</text></svg>">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.js" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-animation">
+                <div class="book-animation">
+                    <div class="book-cover"></div>
+                    <div class="book-page"></div>
+                    <div class="book-page"></div>
+                    <div class="book-page"></div>
+                </div>
+            </div>
+            <h2>StudyMate</h2>
+            <p>Loading your study companion...</p>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-graduation-cap"></i>
+                <span>StudyMate</span>
+            </div>
+            
+            <div class="nav-center">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search books, notes, or features..." id="globalSearch">
+                    <kbd>Ctrl+K</kbd>
+                </div>
+            </div>
+            
+            <div class="nav-actions">
+                <button class="nav-btn" id="themeToggle" title="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="nav-btn" id="notificationsBtn" title="Notifications">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-badge">3</span>
+                </button>
+                <div class="user-menu" id="userMenu">
+                    <button class="user-avatar" id="userAvatar">
+                        <i class="fas fa-user"></i>
+                    </button>
+                    <div class="user-dropdown" id="userDropdown">
+                        <div class="user-info">
+                            <div class="user-name">Guest User</div>
+                            <div class="user-plan">Free Plan</div>
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <button class="dropdown-item" onclick="showAuthModal()">
+                            <i class="fas fa-sign-in-alt"></i>
+                            Sign In
+                        </button>
+                        <button class="dropdown-item" onclick="showUpgradeModal()">
+                            <i class="fas fa-crown"></i>
+                            Upgrade to Pro
+                        </button>
+                        <button class="dropdown-item" onclick="showSettingsModal()">
+                            <i class="fas fa-cog"></i>
+                            Settings
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h3>Study Tools</h3>
+            <button class="sidebar-toggle" id="sidebarToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <div class="sidebar-nav">
+            <div class="nav-section">
+                <div class="nav-section-title">Core Features</div>
+                <a href="#" class="nav-item active" data-section="dashboard">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="nav-item" data-section="library">
+                    <i class="fas fa-books"></i>
+                    <span>Library</span>
+                    <span class="nav-badge">12</span>
+                </a>
+                <a href="#" class="nav-item" data-section="notes">
+                    <i class="fas fa-sticky-note"></i>
+                    <span>Notes</span>
+                    <span class="nav-badge">8</span>
+                </a>
+                <a href="#" class="nav-item" data-section="highlights">
+                    <i class="fas fa-highlighter"></i>
+                    <span>Highlights</span>
+                </a>
+                <a href="#" class="nav-item" data-section="history">
+                    <i class="fas fa-history"></i>
+                    <span>History</span>
+                </a>
+            </div>
+            
+            <div class="nav-section">
+                <div class="nav-section-title">AI Tools</div>
+                <a href="#" class="nav-item" data-section="question-generator">
+                    <i class="fas fa-brain"></i>
+                    <span>Question Generator</span>
+                    <span class="pro-badge">AI</span>
+                </a>
+                <a href="#" class="nav-item" data-section="explain-text">
+                    <i class="fas fa-lightbulb"></i>
+                    <span>Text Explainer</span>
+                    <span class="pro-badge">AI</span>
+                </a>
+                <a href="#" class="nav-item" data-section="mind-map">
+                    <i class="fas fa-project-diagram"></i>
+                    <span>Mind Maps</span>
+                    <span class="pro-badge">AI</span>
+                </a>
+                <a href="#" class="nav-item" data-section="ai-tutor">
+                    <i class="fas fa-robot"></i>
+                    <span>AI Tutor</span>
+                    <span class="pro-badge">NEW</span>
+                </a>
+            </div>
+            
+            <div class="nav-section">
+                <div class="nav-section-title">Productivity</div>
+                <a href="#" class="nav-item" data-section="pomodoro">
+                    <i class="fas fa-clock"></i>
+                    <span>Focus Timer</span>
+                </a>
+                <a href="#" class="nav-item" data-section="streaks">
+                    <i class="fas fa-fire"></i>
+                    <span>Study Streaks</span>
+                </a>
+                <a href="#" class="nav-item" data-section="goals">
+                    <i class="fas fa-target"></i>
+                    <span>Study Goals</span>
+                    <span class="pro-badge">NEW</span>
+                </a>
+                <a href="#" class="nav-item" data-section="analytics">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Analytics</span>
+                </a>
+            </div>
+            
+            <div class="nav-section">
+                <div class="nav-section-title">Tools</div>
+                <a href="#" class="nav-item" data-section="ocr">
+                    <i class="fas fa-camera"></i>
+                    <span>OCR Scanner</span>
+                </a>
+                <a href="#" class="nav-item" data-section="translator">
+                    <i class="fas fa-language"></i>
+                    <span>Translator</span>
+                </a>
+                <a href="#" class="nav-item" data-section="calculator">
+                    <i class="fas fa-calculator"></i>
+                    <span>Smart Calculator</span>
+                    <span class="pro-badge">NEW</span>
+                </a>
+                <a href="#" class="nav-item" data-section="citation">
+                    <i class="fas fa-quote-right"></i>
+                    <span>Citation Generator</span>
+                    <span class="pro-badge">NEW</span>
+                </a>
+            </div>
+            
+            <div class="nav-section">
+                <div class="nav-section-title">Community</div>
+                <a href="#" class="nav-item" data-section="study-groups">
+                    <i class="fas fa-users"></i>
+                    <span>Study Groups</span>
+                    <span class="pro-badge">NEW</span>
+                </a>
+                <a href="#" class="nav-item" data-section="referrals">
+                    <i class="fas fa-gift"></i>
+                    <span>Referrals</span>
+                </a>
+            </div>
+        </div>
+        
+        <div class="sidebar-footer">
+            <div class="usage-stats">
+                <div class="usage-item">
+                    <span class="usage-label">AI Uses Today</span>
+                    <span class="usage-value">3/5</span>
+                </div>
+                <div class="usage-bar">
+                    <div class="usage-fill" style="width: 60%"></div>
+                </div>
+            </div>
+            <button class="upgrade-btn" onclick="showUpgradeModal()">
+                <i class="fas fa-crown"></i>
+                <span>Upgrade to Pro</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content" id="mainContent">
+        <!-- Content will be dynamically loaded here -->
+    </main>
+
+    <!-- File Upload Drop Zone -->
+    <div class="drop-zone" id="dropZone">
+        <div class="drop-zone-content">
+            <i class="fas fa-cloud-upload-alt"></i>
+            <h3>Drop files here to upload</h3>
+            <p>Supports PDF, EPUB, TXT, DOC, DOCX, Images</p>
+        </div>
+    </div>
+
+    <!-- Auth Modal -->
+    <div class="modal" id="authModal">
+        <div class="modal-backdrop" onclick="closeModal('authModal')"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Welcome to StudyMate</h3>
+                <button class="modal-close" onclick="closeModal('authModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="auth-tabs">
+                    <button class="auth-tab active" data-tab="signin">Sign In</button>
+                    <button class="auth-tab" data-tab="signup">Sign Up</button>
+                </div>
+                
+                <form class="auth-form active" id="signinForm">
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="signinEmail" placeholder="Enter your email">
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <div class="password-input">
+                            <input type="password" id="signinPassword" placeholder="Enter your password">
+                            <button type="button" class="password-toggle" onclick="togglePassword('signinPassword')">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">
+                        Sign In
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                    <p class="auth-link">
+                        Don't have an account? <a href="#" onclick="switchAuthTab('signup')">Sign up</a>
+                    </p>
+                </form>
+                
+                <form class="auth-form" id="signupForm">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" id="signupName" placeholder="Enter your full name">
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="signupEmail" placeholder="Enter your email">
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <div class="password-input">
+                            <input type="password" id="signupPassword" placeholder="Create a password">
+                            <button type="button" class="password-toggle" onclick="togglePassword('signupPassword')">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Referral Code (Optional)</label>
+                        <input type="text" id="referralCode" placeholder="Enter referral code">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">
+                        Create Account
+                        <i class="fas fa-user-plus"></i>
+                    </button>
+                    <p class="auth-link">
+                        Already have an account? <a href="#" onclick="switchAuthTab('signin')">Sign in</a>
+                    </p>
+                </form>
+                
+                <div class="auth-divider">
+                    <span>Or continue with</span>
+                </div>
+                
+                <div class="social-auth">
+                    <button class="social-btn google" onclick="signInWithGoogle()">
+                        <i class="fab fa-google"></i>
+                        Google
+                    </button>
+                    <button class="social-btn github" onclick="signInWithGithub()">
+                        <i class="fab fa-github"></i>
+                        GitHub
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Upgrade Modal -->
+    <div class="modal" id="upgradeModal">
+        <div class="modal-backdrop" onclick="closeModal('upgradeModal')"></div>
+        <div class="modal-content modal-lg">
+            <div class="modal-header">
+                <h3>
+                    <i class="fas fa-crown text-gold"></i>
+                    Upgrade to StudyMate Pro
+                </h3>
+                <button class="modal-close" onClick="closeModal('upgradeModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="pricing-cards">
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h4>Free</h4>
+                            <div class="price">₹0<span>/month</span></div>
+                        </div>
+                        <ul class="features">
+                            <li><i class="fas fa-check"></i> 5 AI uses per day</li>
+                            <li><i class="fas fa-check"></i> Basic library</li>
+                            <li><i class="fas fa-check"></i> Notes & highlights</li>
+                            <li><i class="fas fa-check"></i> Basic OCR</li>
+                            <li><i class="fas fa-times"></i> Advanced AI tools</li>
+                            <li><i class="fas fa-times"></i> Cloud sync</li>
+                        </ul>
+                        <button class="btn btn-secondary btn-full" disabled>Current Plan</button>
+                    </div>
+                    
+                    <div class="pricing-card featured">
+                        <div class="pricing-badge">Most Popular</div>
+                        <div class="pricing-header">
+                            <h4>Pro</h4>
+                            <div class="price">₹299<span>/month</span></div>
+                        </div>
+                        <ul class="features">
+                            <li><i class="fas fa-check"></i> Unlimited AI uses</li>
+                            <li><i class="fas fa-check"></i> Advanced AI tutor</li>
+                            <li><i class="fas fa-check"></i> Cloud sync</li>
+                            <li><i class="fas fa-check"></i> Advanced OCR</li>
+                            <li><i class="fas fa-check"></i> Study groups</li>
+                            <li><i class="fas fa-check"></i> Priority support</li>
+                        </ul>
+                        <button class="btn btn-primary btn-full" onclick="purchasePlan('pro')">
+                            Upgrade Now
+                            <i class="fas fa-crown"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h4>Teams</h4>
+                            <div class="price">₹199<span>/user/month</span></div>
+                        </div>
+                        <ul class="features">
+                            <li><i class="fas fa-check"></i> Everything in Pro</li>
+                            <li><i class="fas fa-check"></i> Team collaboration</li>
+                            <li><i class="fas fa-check"></i> Shared libraries</li>
+                            <li><i class="fas fa-check"></i> Admin dashboard</li>
+                            <li><i class="fas fa-check"></i> Custom branding</li>
+                            <li><i class="fas fa-check"></i> Dedicated support</li>
+                        </ul>
+                        <button class="btn btn-secondary btn-full" onclick="purchasePlan('teams')">
+                            Contact Sales
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="money-back-guarantee">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>30-day money-back guarantee</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Context Menu -->
+    <div class="context-menu" id="contextMenu">
+        <div class="context-item" onclick="highlightText()">
+            <i class="fas fa-highlighter"></i>
+            Highlight
+        </div>
+        <div class="context-item" onclick="translateText()">
+            <i class="fas fa-language"></i>
+            Translate
+        </div>
+        <div class="context-item" onclick="explainText()">
+            <i class="fas fa-lightbulb"></i>
+            Explain
+        </div>
+        <div class="context-item" onclick="createNote()">
+            <i class="fas fa-sticky-note"></i>
+            Create Note
+        </div>
+    </div>
+
+    <!-- PWA Install Banner -->
+    <div class="install-banner" id="installBanner">
+        <div class="install-content">
+            <div class="install-icon">
+                <i class="fas fa-download"></i>
+            </div>
+            <div class="install-text">
+                <h4>Install StudyMate</h4>
+                <p>Get the full app experience</p>
+            </div>
+            <button class="btn btn-primary btn-sm" onclick="installPWA()">
+                Install
+            </button>
+            <button class="install-close" onclick="dismissInstallBanner()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Quick Actions FAB -->
+    <div class="fab-container">
+        <button class="fab main-fab" id="mainFab">
+            <i class="fas fa-plus"></i>
+        </button>
+        <div class="fab-actions" id="fabActions">
+            <button class="fab action-fab" title="Upload File" onclick="uploadFile()">
+                <i class="fas fa-upload"></i>
+            </button>
+            <button class="fab action-fab" title="Create Note" onclick="createQuickNote()">
+                <i class="fas fa-sticky-note"></i>
+            </button>
+            <button class="fab action-fab" title="Start Timer" onclick="startQuickTimer()">
+                <i class="fas fa-clock"></i>
+            </button>
+            <button class="fab action-fab" title="OCR Scan" onclick="startOCRScan()">
+                <i class="fas fa-camera"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-storage-compat.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script src="https://unpkg.com/tesseract.js@v4.1.1/dist/tesseract.min.js"></script>
+    <script src="https://unpkg.com/mammoth@1.6.0/mammoth.browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://unpkg.com/epubjs@0.3.93/dist/epub.min.js"></script>
+    
+    <script src="app.js"></script>
+</body>
+</html>
